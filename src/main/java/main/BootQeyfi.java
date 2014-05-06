@@ -18,7 +18,12 @@ import org.springframework.context.annotation.Configuration;
 public class BootQeyfi {
 
     public static void main(String[] args) throws Exception {
-       // SpringApplication.run(BootQeyfi.class, args);
+        String webPort = System.getenv("PORT");
+        if (webPort == null || webPort.isEmpty()) {
+            webPort = "8080";
+        }
+        System.setProperty("server.port", webPort);
+
         SpringApplication app = new SpringApplication(BootQeyfi.class);
         app.setShowBanner(false);
         app.run(args);
