@@ -10,19 +10,28 @@
 <html>
 <head>
     <title>Product</title>
+    <link href="/css/TableCSSCode.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 
-<table border="5">
-    <c:forEach var="product" items="${products}">
+<div class="CSSTableGenerator">
+    <table>
+        <tr>
+            <td>sku</td>
+            <td>materialName</td>
+            <td>price</td>
+            <td>availability</td>
+        <tr>
+        <c:forEach var="product" items="${products}">
         <tr>
             <td>${product.sku}</td>
             <td>${product.materialName}</td>
             <td>${product.price}</td>
             <td>${product.availability}</td>
         <tr>
-    </c:forEach>
-</table>
+            </c:forEach>
+    </table>
+</div>
 
 </body>
 </html>
