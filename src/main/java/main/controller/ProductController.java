@@ -3,6 +3,7 @@ package main.controller;
 import main.dao.ProductRepository;
 import main.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +33,7 @@ public class ProductController {
         return "product-page";
     }
 
+    @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/available")
     public String getSku(ModelMap modelMap){
         List<Product> availableProducts = repository.findByAvailabilityNot(0);
