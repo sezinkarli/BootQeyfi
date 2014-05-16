@@ -14,13 +14,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
  *        User: Sezin Karli
  */
 @Controller
-@RequestMapping(value = "/hello")
+@RequestMapping(value = "/")
 public class HelloController {
 
     @Autowired
     private HelloService service;
 
-    @RequestMapping(value = "/{user}")
+    @RequestMapping(value = "")
+    public String handleIndex(){
+        return "index";
+    }
+
+    @RequestMapping(value = "hello/{user}")
     public String handleOne(@PathVariable String user, ModelMap modelMap){
         String helloToken = service.sayHello() + " " + user;
         modelMap.put("token", helloToken);
